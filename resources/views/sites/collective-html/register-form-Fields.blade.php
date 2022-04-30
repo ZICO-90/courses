@@ -81,13 +81,13 @@
     <label>
         {!! Form::checkbox('instructor', '1') !!}
         <span>مدرب</span>
-        <a href="trainer-privacy.html" class="show-privacy" >تعرف علي سياسة الخصوصية كمدرب</a>
+        <a   data-toggle="modal" class="privacy" data-target="#teacher" >تعرف علي سياسة الخصوصية كمدرب</a>
     </label>
     <label>
         
         {!! Form::checkbox('student', '2') !!}
         <span>متدرب</span>
-        <a href="trainer-privacy.html" class="show-privacy">تعرف علي سياسة الخصوصية كمتدرب</a>
+        <a  data-toggle="modal" class="privacy"  data-target="#sudents" >تعرف علي سياسة الخصوصية كمتدرب</a>
     </label>
 </div>
 <!-- /.up_form-item -->

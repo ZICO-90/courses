@@ -23,11 +23,7 @@
                               </a>
                           </li>
           
-                          <li>
-                              <a href="course-comments.html">
-                                  <i class="fa fa-commenting-o"></i> النقاشات
-                              </a>
-                          </li>
+                         
           
                           <li>
                               <a href="course-alerts.html" class="{{$getNotify->id === Crypt::decrypt(request()->route()->parameters['id']) ? 'active' : ''}}">
@@ -99,4 +95,5 @@
               <!-- end lesson-box -->
           </div>
 </div>
+<hr style="clear:both;"/>
 @endsection

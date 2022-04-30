@@ -16,7 +16,7 @@ class NotifyStudentController extends Controller
 {
     public function sendAllStudents(Request $request)
     {
-       
+   
         $message =
          [
             'required' => "جميع بيانات التنويه مطلوبة من فضل ادخل البيانات بشكل صحصح" ,
@@ -58,6 +58,8 @@ class NotifyStudentController extends Controller
 
        
         $result = UserCource::where('cource_id' , $courseId )->get();
+
+    
 
         if(sizeof($result) === 0)
         return back()->with(['info' => "حالة الارسال: لا يوحد مشتركين بهذه الدورة" ]);  

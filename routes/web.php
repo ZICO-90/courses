@@ -23,6 +23,8 @@ use App\Http\Controllers\users\NotifyStudentController;
 use App\Http\Controllers\users\commentsLessonController;
 use App\Http\Controllers\users\testCoursesController;
 use App\Http\Controllers\users\certifPrintController;
+use App\Http\Controllers\users\aboutController;
+use App\Http\Controllers\users\contactController;
 
 
 
@@ -95,6 +97,8 @@ Route::group(['prefix'=> 'profile', 'as'=>'profile.' ,'middleware' => [ 'auth' ]
         Route::get('/details',[CoursesController::class,'details'])->name('details');
         Route::put('/update-course/{id}',[CoursesController::class,'updateCourese'])->name('update.course');
         Route::match(['PUT' , 'POST'],'/certificate/{certifi}',[CoursesController::class,'updateOrCreateCertificate'])->name('certifi');
+        Route::get('/delete/{id}',[CoursesController::class,'delete'])->name('delete.c');
+
 
         Route::POST('/Lesson/add',[LessonsController::class,'lessonAdd'])->name('lesson.add');
 
@@ -191,10 +195,16 @@ Route::group(['prefix'=> 'subscriber', 'as' =>'subscriber.' , 'middleware' => [ 
 }); #-- end subscribe course group 
 
 
-Route::post('/search',[HomeController::class,'searchAjax'])->name('search.ajax');
-
-Route::get('/r-tests',[courseSubscribeController::class,'test'])->name('r.test');
 
 
 
 
+
+Route::get('/r-tests',function(){
+    return view('sites.contact');
+})->name('r.test');
+
+
+Route::get('/about',[aboutController::class,'about'])->name('about');
+
+Route::get('/contact',[contactController::class,'contact'])->name('contact');

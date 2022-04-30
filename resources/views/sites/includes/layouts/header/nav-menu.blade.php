@@ -4,7 +4,7 @@
     </h2>
     <ul> 
         <li><a class="icon icon-data" href="{{route('homepage') }}"><i class="glyphicon glyphicon-home"></i> الرئيسية</a></li>
-        <li><a id="sd" class="icon icon-location" href="about-us.html"><i class="glyphicon glyphicon-eye-open"></i>من نحن</a></li>
+        <li><a id="sd" class="icon icon-location" href="{{route('about')}}"><i class="glyphicon glyphicon-eye-open"></i>من نحن</a></li>
         @if(auth()->guard('web')->check())
           @if(auth()->guard('web')->user()->is_work == 1 ||  auth()->guard('web')->user()->is_work == 3 )
          
@@ -29,6 +29,6 @@
         <li><a class="icon icon-data" href="{{route('profile.password.reset.show')}}"><i class="glyphicon glyphicon-lock"></i>تغير كلمة المرور</a></li>
         @endif
       
-        <li><a class="icon icon-photo" href="trainer-privacy.html"><i class="glyphicon glyphicon-exclamation-sign"></i>سياسة الخصوصية</a></li>
+        <li><a class="icon icon-photo" href="{{route('contact')}}"><i class="glyphicon glyphicon-exclamation-sign"></i>اتصل بنا</a></li>
     </ul>
 </nav>

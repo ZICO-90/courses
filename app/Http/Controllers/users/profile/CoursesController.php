@@ -11,6 +11,7 @@ use App\Http\Traits\ImagesTrait;
 use App\Http\Traits\UsersTrait;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Lesson;
 use App\Models\Certificate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -352,6 +353,38 @@ class CoursesController extends Controller
 
 
    }
+
+
+   public function delete($id)
+    {
+     
+       
+        $course = Course::findOrFail($id);
+   
+        if($course ->url_type === 1)
+        {
+            \Illuminate\Support\Facades\File::delete($course ->url);
+        }
+
+        $Lesson = Lesson::where( 'cource_id' ,$course->id)->get();
+      
+        if( sizeof($Lesson) > 0 )
+        {
+
+               foreach ($Lesson as  $value) {
+                  
+                   if($value->url_type === 1)
+                   {
+                       \Illuminate\Support\Facades\File::delete($value ->url_video);
+                   }
+                 
+               }
+       }
+
+        $course->delete();
+        return redirect()->back()->with(['info' =>  "تم حذف الدورة بنجاح" ]);
+
+    }
 
 
    

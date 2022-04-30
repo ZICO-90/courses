@@ -527,7 +527,7 @@ $( document ).ready(function()
                                                     <div class="panel-body">
                                                         <div class="instructor-control text-center">
             
-                                                            <a href="#" class="delete-course">
+                                                            <a href="{{route('profile.course.delete.c' , $item->id)}}" class="delete-course">
                                                                 <i class="fa fa-trash"></i> حذف الدورة
                                                             </a>
                                                             <a href="#" class="add-course" onclick="add_lectur('add_lecture_{{$item->id}}')">
@@ -897,26 +897,24 @@ $( document ).ready(function()
                                                                 <div class="modal-body" style="text-align: center">
                                                                    
                                                                      
-                                                                    {!!  Form::open(['route' => 'subscriber.course.free'  , "id" => "payOrder" , 'method' => 'POST' ]) !!}
+                                                                    {!!  Form::open(['route' => 'profile.course.notify.subscribers.send.mail'  , "id" => "payOrder" , 'method' => 'get' ]) !!}
 
                                                                     
-                                                                        <div class="lost-inner">
-                                                                            <h1>
-                                                                                <i class="fa fa-envelope"></i>
-                                                                                إرسال رسالة الي جميع الطلبة المشتركين بهذه الدورة
-                                                                            </h1>
-                                                                           
-                                                                            <!-- /.lost-item -->
-                                                                            <div class="lost-item" id="alert-item">
-                                                                                <textarea placeholder="مضمون التنويه">{{$item->id}}</textarea>
-                                                                            </div>
-                                                                            <!-- /.lost-item -->
-                                                                            <div class="text-center">
-                                                                                <input type="submit" value="ارسال ">
-                                                                            </div>
-                                                                            <!-- /.lost-item -->
+                                                                    <div class="lost-inner">
+                                                                        <h1>
+                                                                                                                    <i class="fa fa-envelope"></i>
+                                                                                                                    إرسال لجميع الطلاب المشتركين في الدورة
+                                                                                                                </h1>
+                                                                        <div class="lost-item" id="messageTo">
+                                                                            <textarea placeholder="اكتب الرسالة هنا" name="message" required></textarea>
                                                                         </div>
-                                                                        <!-- /.lost-inner -->
+                                                                        <input type="hidden"  name="courseId" value="{{Crypt::encrypt($item->id)}}">
+                                                                        <!-- /.lost-item -->
+                                                                        <div class="text-center">
+                                                                            <input type="submit" value="إرسال">
+                                                                        </div>
+                                                                        <!-- /.lost-item -->
+                                                                    </div>
                                                                     
                                                                     <!-- /.modal -->
                                                                     

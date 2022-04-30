@@ -23,8 +23,9 @@ class RegisteredUserController extends Controller
     public function create()
     {
        $country = $this->dropDownList();
+       $policy = \App\Models\PrivacyPolicy::get()->first();
       
-        return view('sites.auth.register',compact('country'));
+        return view('sites.auth.register',compact('country' ,'policy'));
     }
 
     public function dropDownList()

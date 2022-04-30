@@ -3772,6 +3772,20 @@ input[type="checkbox"]:checked:before {
     transition: all .4s;
 }
 
+/* me edit*/
+
+.up_form-item .privacy {
+    color: #1C60F9;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin: 10px 5px 0 0;
+}
+
+.up_form-item .privacy:hover {
+    text-decoration: underline;
+}
+/*end edit */
 .up_form-item .show-privacy {
     color: #1C60F9;
     font-weight: normal;

@@ -83,6 +83,7 @@
                 </ul>
             </div>
             @endif
+
             <div class="container">
                 <ul>
                    
@@ -108,12 +109,8 @@
                         </a>
                     </li>
 
-                    <li>
-                        </li><li>
-                            <a href="course-comments.html">
-                                <i class="fa fa-commenting-o"></i> النقاشات
-                            </a>
-                        </li>
+                    
+                       
 
                         <li>
                             <a href="{{route('profile.course.notify.Subscribers.show' , request()->route()->parameters['id'])}}">
@@ -196,13 +193,17 @@
                             {!!  Form::open(['route' => 'profile.course.notify.Subscribers'  , "id" => "notify" , 'method' => 'POST' ]) !!}
 
                             
+                           
+                            
+                        
                                 <div class="lost-inner">
                                     <h1>
                                         <i class="fa fa-envelope"></i>
                                         اضافة تنويه للطلاب المشتركين في الدورة
                                     </h1>
                                     <div class="lost-item" id="alert-item">
-                                        <input type="text" placeholder="عنوان التنويه" name="title">
+                                       
+                                        <textarea placeholder="عنوان التنويه" name="title"></textarea>
                                     </div>
                                     <!-- /.lost-item -->
                                     <div class="lost-item" id="alert-item">
@@ -210,17 +211,16 @@
                                     </div>
 
                                   
-                                        <input type="hidden"  name="courseId" value="{{request()->route()->parameters['id']}}">
-                                    
+                                    <input type="hidden"  name="courseId" value="{{request()->route()->parameters['id']}}">
+                                    <input type="hidden"  name="instructorId" value="{{Crypt::encrypt($show_info_course->instructor_id )}}">
                                     <!-- /.lost-item -->
                                     <div class="text-center">
-                                        <input type="submit" value="نشر التنويه">
+                                       
+                                        <button type="submit" class="btn btn-secondary" >نشر التنويه</button>
                                     </div>
                                     <!-- /.lost-item -->
                                 </div>
                                 <!-- /.lost-inner -->
-                            
-                            <!-- /.modal -->
                             
                               {!! Form::close() !!}
                                 
@@ -263,7 +263,8 @@
                                 <input type="hidden"  name="courseId" value="{{request()->route()->parameters['id']}}">
                                 <!-- /.lost-item -->
                                 <div class="text-center">
-                                    <input type="submit" value="إرسال">
+                                  
+                                    <button type="submit" class="btn btn-secondary" >إرسال</button>
                                 </div>
                                 <!-- /.lost-item -->
                             </div>
@@ -294,7 +295,7 @@
             <div class="container">
                 @php
                 $test =  auth()->guard('web')->user()->test_courses()->where('cource_id' ,$show_info_course->id )->first();
-              
+             
                 @endphp
                 @if(! empty($show_info_course->Certificate))
                     
@@ -304,11 +305,15 @@
                 @if($test->allow_print === 1)
                 <div class="certf text-center animated bounceIn">
                     <h1>تهانينا لقد  انتهيت من هذه الدورة بنجاح </h1>
-                    <a href="{{route('profile.course.print.certif.snappyBdf' , request()->route()->parameters['id'] )}}">
+                    <a href="#">
                         <i class="fa fa-print"></i> تستطيع طباعة الشهادة
                     </a>
                 </div>
-              
+                @else
+                <div class="certf text-center animated bounceIn">
+                    <h1>تهانينا لقد  انتهيت من هذه الدورة بنجاح </h1>
+                   
+                </div>
                 @endif
 
                 @endif
@@ -443,7 +448,7 @@
 
 </div>
 
-  
+
 
 @endsection
 

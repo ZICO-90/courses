@@ -72,6 +72,8 @@ class AcountPersonlyController extends Controller
 
         if($request->hasFile('avatar'))
         {
+
+           
             $image =$request->file('avatar');
            
             $imageName = time().hash('sha256' , Str::random(120)) . '.' . $image->getClientOriginalExtension();
